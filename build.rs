@@ -24,7 +24,7 @@ mod build {
     extern crate gcc;
     extern crate target_info;
 
-    use target_info::Target;
+    use self::target_info::Target;
 
     pub fn main() {
         let mut config = gcc::Config::new();
