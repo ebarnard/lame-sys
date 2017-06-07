@@ -1,9 +1,9 @@
 [package]
 name = "lame-sys"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Edward Barnard <eabarnard@gmail.com>"]
 description = "FFI bindings to libmp3lame"
-documentation = "https://docs.rs/lame-sys/0.1.1"
+documentation = "https://docs.rs/lame-sys/0.1.2"
 homepage = "https://github.com/ebarnard/lame-sys"
 repository = "https://github.com/ebarnard/lame-sys"
 keywords = ["lame", "mp3", "mp3lame", "libmp3lame", "codec"]
