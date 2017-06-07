@@ -22,3 +22,6 @@ libc = "0.2.12"
 [build-dependencies]
 gcc = { version = "0.3.50", optional = true }
 target_info = { version = "0.1.0", optional = true }
+
+[package.metadata.docs.rs]
+features = [ "bundled" ]
