@@ -1,0 +1,24 @@
+[package]
+name = "lame-sys"
+version = "0.1.0"
+authors = ["Edward Barnard <eabarnard@gmail.com>"]
+description = "FFI bindings to libmp3lame"
+documentation = "https://docs.rs/lame-sys/0.1.0"
+homepage = "https://github.com/ebarnard/lame-sys"
+repository = "https://github.com/ebarnard/lame-sys"
+keywords = ["lame", "mp3", "mp3lame", "libmp3lame", "codec"]
+categories = ["encoding", "external-ffi-bindings", "multimedia::audio", "multimedia::encoding"]
+license = "MIT/Apache-2.0/LGPL-2.1"
+links = "mp3lame"
+build = "build.rs"
+
+[features]
+default = []
+bundled = ["gcc", "target_info"]
+
+[dependencies]
+libc = "0.2.12"
+
+[build-dependencies]
+gcc = { version = "0.3.50", optional = true }
+target_info = { version = "0.1.0", optional = true }
