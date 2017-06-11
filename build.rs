@@ -22,11 +22,13 @@ mod build {
 #[cfg(feature = "bundled")]
 mod build {
     extern crate gcc;
-    extern crate target_info;
 
-    use self::target_info::Target;
+    use std::env;
 
     pub fn main() {
+        let target_os = env::var("CARGO_CFG_TARGET_OS").expect("CARGO_CFG_TARGET_OS not set");
+        let target_arch = env::var("CARGO_CFG_TARGET_ARCH").expect("CARGO_CFG_TARGET_ARCH not set");
+
         let mut config = gcc::Config::new();
 
         config.file("lame-3.99.5/libmp3lame/bitstream.c")
@@ -54,21 +56,21 @@ mod build {
             .define("HAVE_CONFIG_H", None)
             .define("PIC", None);
 
-        if Target::os() == "windows" {
+        if target_os == "windows" {
             config.define("TAKEHIRO_IEEE754_HACK", None)
                 .define("FLOAT8", Some("float"))
                 .define("REAL_IS_FLOAT", Some("1"))
                 .define("BS_FORMAT", Some("BINARY"));
         }
 
-        let os_config_dir = match Target::os() {
+        let os_config_dir = match &*target_os {
             "linux" => "linux",
             "macos" => "mac",
             "windows" => "win",
             os => panic!("unsupported os {}", os),
         };
 
-        let arch_config_dir = match Target::arch() {
+        let arch_config_dir = match &*target_arch {
             "x86" => "ia32",
             "x86_64" => "x64",
             "arm" => "arm",
